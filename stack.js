@@ -43,3 +43,24 @@ console.log(stack.pop());
 console.log(stack.pop());
 console.log(stack.peek());
 console.log(stack.isEmpty());
+
+// Given an input string s, reverse the string word by word.
+// Input: s = "the sky is blue"
+// Output: "blue is sky the"
+
+// Input: s = "hello world"
+// Output: "world hello"
+
+const reverseWords = (s) => {
+    let arr = s.split(" ");
+    let stack = new Stack();
+    for(let i = 0; i < arr.length; i++) {
+        stack.push(arr[i]);
+    }
+    let res = "";
+    while(!stack.isEmpty()) {
+        res += stack.pop() + " ";
+    }
+    return res;
+}
+console.log(reverseWords("the sky is blue"));

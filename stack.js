@@ -64,3 +64,36 @@ const reverseWords = (s) => {
     return res;
 }
 console.log(reverseWords("the sky is blue"));
+
+
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
+// determine if the input string is valid.
+// An input string is valid if the open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+
+// Input: s = "()"
+// Output: true
+
+// Input: s = "()[]{}"  
+// Output: true
+
+// Input: s = "(]"
+// Output: false
+
+const isValid = (s) => {
+    let stack = new Stack();
+    for(let i=0; i<s.length; i++){
+        if(s[i] === "(" || s[i] === "[" || s[i] === "{"){
+            stack.push(s[i]);
+        }
+        else if(s[i]===")" || s[i]==="]" || s[i]==="}"){
+            if(stack.isEmpty()) return false;
+            let top = stack.pop();
+            if((s[i]===")" && top!=="(") ||
+            (s[i]==="]" && top!=="[") ||
+            (s[i]==="}" && top!=="{")) return false;
+        }
+    }
+    return stack.isEmpty();
+}
+console.log(isValid("()[][{}]"));
